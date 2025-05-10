@@ -22,6 +22,7 @@ RUN apt-get update -qq\
     && DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends -y\
     terraform
 
+
 RUN echo "INSTALL UTIL"
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends -y\
     ## util
@@ -45,3 +46,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends -
 ARG HADOLINT_URL
 RUN wget -q -O /usr/local/bin/hadolint ${HADOLINT_URL} --no-check-certificate\
     && chmod +x /usr/local/bin/hadolint
+
+# terraform auto complete
+USER vscode
+WORKDIR /home/vscode
+RUN terraform -install-autocomplete
