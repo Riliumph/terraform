@@ -36,7 +36,8 @@
 				"adpyke.vscode-sql-formatter",
 				"eamodio.gitlens",
 				"mhutchie.git-graph",
-				"donjayamanne.githistory"
+				"donjayamanne.githistory",
+				"HashiCorp.terraform"
 			]
 		}
 	}
