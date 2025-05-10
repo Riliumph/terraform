@@ -47,7 +47,13 @@ ARG HADOLINT_URL
 RUN wget -q -O /usr/local/bin/hadolint ${HADOLINT_URL} --no-check-certificate\
     && chmod +x /usr/local/bin/hadolint
 
+# git
+WORKDIR /usr/share/doc/git/contrib/diff-highlight
+RUN make all && \
+    cp diff-highlight /usr/local/bin
+
 # terraform auto complete
 USER vscode
 WORKDIR /home/vscode
 RUN terraform -install-autocomplete
+
