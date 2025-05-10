@@ -22,6 +22,10 @@ RUN apt-get update -qq\
     && DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends -y\
     terraform
 
+RUN echo "AWS CLI"
+RUN curl -sSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"\
+    && unzip awscliv2.zip\
+    && ./aws/install
 
 RUN echo "INSTALL UTIL"
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq install --no-install-recommends -y\
@@ -56,4 +60,3 @@ RUN make all && \
 USER vscode
 WORKDIR /home/vscode
 RUN terraform -install-autocomplete
-
