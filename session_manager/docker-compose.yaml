@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  terraform:
+    container_name: terraform
+    hostname: terraformer
+    image: hashicorp/terraform:1.5
+    # build:
+    #   context: .
+    #   dockerfile: dockerfile
+    env_file:
+      - .env
+    volumes:
+      - type: bind
+        source: ./
+        target: /terraform
+    working_dir: /terraform/terraform
+    entrypoint: ash
+    stdin_open: true
+    tty: true
