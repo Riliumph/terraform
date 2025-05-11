@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "ap-northeast-1"
-}
-
 # IAMグループの作成
 resource "aws_iam_group" "terraformers" {
   name = "terraformers"
@@ -31,7 +27,7 @@ resource "aws_iam_policy" "terraformer_policy" {
 }
 
 # IAMグループへポリシーをアタッチする
-resource "aws_iam_group_policy_attachment" "terraformers_attach_policy" {
+resource "aws_iam_group_policy_attachment" "terraformers_attached_policy" {
   group      = aws_iam_group.terraformers.name
   policy_arn = aws_iam_policy.terraformer_policy.arn
 }
