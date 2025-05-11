@@ -62,7 +62,11 @@ resource "aws_s3_bucket_lifecycle_configuration" "log_lifecycle" {
     }
 
     filter {
-      prefix = ""
+      prefix = "logs"
     }
   }
+}
+
+output "log_storage" {
+  value = aws_s3_bucket.log_bucket.bucket
 }
