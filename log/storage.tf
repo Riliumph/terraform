@@ -43,9 +43,22 @@ resource "aws_s3_bucket_lifecycle_configuration" "log_lifecycle" {
   rule {
     id     = "log-expiration"
     status = "Enabled"
+    # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration#storage_class-2
+    transition {
+      # 30日後にGlacierへ移行
+      days          = 30
+      storage_class = "GLACIER"
+    }
+
+    transition {
+      # Gracierは最小90日間は保存される
+      days          = 120 # 30+90=120
+      storage_class = "DEEP_ARCHIVE"
+    }
 
     expiration {
-      days = 30
+      # Deep Archiveは最小180日間は保存される
+      days = 300 # 120 + 180 = 300
     }
 
     filter {
