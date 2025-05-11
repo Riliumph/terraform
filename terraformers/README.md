@@ -1,0 +1,3 @@
+# terraformers
+
+AWSのアカウントにterraformを実行する権限グループを作成する
