@@ -5,3 +5,7 @@
 *.hcl
 *.tfstate
 *.tfstate.backup
+
+# Draw.io
+*.bkp
+*.dtmp
