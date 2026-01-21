@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:debian
+FROM mcr.microsoft.com/devcontainers/base:debian-11
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN echo "INSTALL terraform"
@@ -7,7 +7,6 @@ RUN apt-get update -qq\
     wget\
     curl\
     gnupg\
-    software-properties-common\
     && apt-get clean\
     && rm -rf /var/lib/apt/lists/*
 
